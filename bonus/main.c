@@ -6,7 +6,7 @@
 /*   By: hyuncpar <hyuncpar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 14:33:17 by hyuncpar          #+#    #+#             */
-/*   Updated: 2022/10/24 16:40:20 by hyuncpar         ###   ########.fr       */
+/*   Updated: 2022/10/25 18:13:11 by hyuncpar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,8 @@ void	parse_command(t_stack *stack, char *command)
 		reverse_rotate_b(stack);
 	else if (!ft_strcmp(command, "rrr\n"))
 		reverse_rotate_all(stack);
+	else
+		print_error(stack);
 }
 
 void	check_result(t_stack *stack)
@@ -78,16 +80,9 @@ int	main(int argc, char **argv)
 		return (0);
 	init(&stack);
 	if (!argv_to_stack(&stack, ++argv))
-	{
-		write(2, "Error\n", 6);
-		return (0);
-	}
-	if (stack_is_sort(&stack))
-	{
-		clear_stack(&stack);
-		return (0);
-	}
+		print_error(&stack);
 	command_in(&stack);
 	check_result(&stack);
+	clear_stack(&stack);
 	return (0);
 }

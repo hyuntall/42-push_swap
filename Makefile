@@ -6,16 +6,15 @@
 #    By: hyuncpar <hyuncpar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/12 15:12:08 by hyuncpar          #+#    #+#              #
-#    Updated: 2022/10/24 19:28:45 by hyuncpar         ###   ########.fr        #
+#    Updated: 2022/10/25 18:13:31 by hyuncpar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	=	push_swap
 BNAME	=	checker
 
-CC		=	gcc
-CFLAGS	=	-Wall -Wextra -Werror -Iinclude
-AR		=	ar rcs
+CC		=	cc
+CFLAGS	=	-Wall -Wextra -Werror
 RM		=	rm -f
 
 SRCS	=	main.c parse.c list_utils.c utils.c push.c swap.c rotate.c reverse_rotate.c \
@@ -48,10 +47,9 @@ clean :
 	$(RM) $(OBJS) $(BOBJS)
 
 fclean : clean
-	$(RM) $(NAME)
+	$(RM) $(NAME) $(BNAME)
 
-re :
-	fclean
-	all
+re : fclean
+	$(MAKE)
 
 .PHONY : all clean fclean re bonus
